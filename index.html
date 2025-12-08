@@ -200,9 +200,8 @@
     const area = document.getElementById("itemList");
     area.innerHTML = "";
 
-    const keyword = document.getElementById("searchBox").value.toLowerCase();
-
-   const k = (keyword || "").toLowerCase();
+   const keyword = document.getElementById("searchBox").value || "";
+const k = keyword.toLowerCase();
 
 const filtered = list.filter(item =>
   (item.name || "").toLowerCase().includes(k)
@@ -248,4 +247,5 @@ const filtered = list.filter(item =>
 
 </body>
 </html>
+
 
