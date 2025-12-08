@@ -189,11 +189,18 @@
   };
 
   // ▼ 削除
-  window.deleteItem = function(id){
-    list = list.filter(x => x.id !== id);
-    save();
-    render();
-  };
+import { deleteDoc } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+
+window.deleteItem = async function(id){
+  // ローカル配列から削除
+  list = list.filter(x => x.id !== id);
+
+  // Firestore から削除
+  await deleteDoc(doc(db, "wakuList", String(id)));
+
+  render();
+};
+
 
   // ▼ 一覧描画（検索対応）
   window.render = function(){
@@ -247,5 +254,6 @@ const filtered = list.filter(item =>
 
 </body>
 </html>
+
 
 
