@@ -202,9 +202,12 @@
 
     const keyword = document.getElementById("searchBox").value.toLowerCase();
 
-    const filtered = list.filter(item =>
-      item.name.toLowerCase().includes(keyword)
-    );
+   const k = (keyword || "").toLowerCase();
+
+const filtered = list.filter(item =>
+  (item.name || "").toLowerCase().includes(k)
+);
+
 
     filtered.forEach(item =>{
       const pClass =
@@ -245,3 +248,4 @@
 
 </body>
 </html>
+
