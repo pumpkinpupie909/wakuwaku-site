@@ -129,10 +129,19 @@
 
   // ▼ 保存（全上書き方式）
   async function save(){
-    for(const item of list){
-      await setDoc(doc(db, "wakuList", String(item.id)), item);
-    }
+  const colRef = collection(db, "wakuList");
+  const snap = await getDocs(colRef);
+
+  // 一旦全部削除
+  for (const d of snap.docs) {
+    await deleteDoc(doc(db, "wakuList", d.id));
   }
+
+  // 今の list を全件保存
+  for(const item of list){
+    await setDoc(doc(db, "wakuList", String(item.id)), item);
+  }
+}
 
   // ▼ 追加
   window.addItem = function (){
@@ -254,6 +263,7 @@ const filtered = list.filter(item =>
 
 </body>
 </html>
+
 
 
 
