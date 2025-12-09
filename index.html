@@ -238,27 +238,26 @@ const filtered = list.filter(item =>
       const div = document.createElement("div");
       div.className = "item-card";
 
-      div.innerHTML = `
-        <div class="top-row">
-          <label style="flex:1;">
-            <input type="checkbox" ${item.done?"checked":""}
-              onclick="toggleDone(${item.id})">
-            <span class="${pClass}">[${item.priority}]</span>
-            <strong>${item.name}</strong>
-          </label>
-        </div>
+     div.innerHTML = `
+  <div style="margin-bottom: 8px;">
+    <strong style="font-size: 18px; white-space: normal;">
+      ${item.name}
+    </strong>
+    <span class="${pClass}" style="margin-left: 8px;">[${item.priority}]</span>
+  </div>
 
-        <div style="display:flex; gap:8px; margin-top:8px;">
-          <button style="background:#2196f3;" onclick="editItem(${item.id})">編集</button>
-          <button style="background:#e53935;" onclick="deleteItem(${item.id})">削除</button>
-        </div>
+  <div style="display:flex; gap:8px; margin-bottom:12px;">
+    <button style="background:#2196f3;" onclick="editItem(${item.id})">編集</button>
+    <button style="background:#e53935;" onclick="deleteItem(${item.id})">削除</button>
+  </div>
 
-     <div>1体目: ${(item.slots?.[0] || "-")}</div>
-    <div>2体目: ${(item.slots?.[1] || "-")}</div>
-    <div>3体目: ${(item.slots?.[2] || "-")}</div>
-    <div>4体目: ${(item.slots?.[3] || "-")}</div>
-    <div>5体目: ${(item.slots?.[4] || "-")}</div>
-      `;
+  <div>1体目: ${item.slots?.[0] || "-"}</div>
+  <div>2体目: ${item.slots?.[1] || "-"}</div>
+  <div>3体目: ${item.slots?.[2] || "-"}</div>
+  <div>4体目: ${item.slots?.[3] || "-"}</div>
+  <div>5体目: ${item.slots?.[4] || "-"}</div>
+`;
+
 
       area.appendChild(div);
     });
@@ -268,5 +267,6 @@ const filtered = list.filter(item =>
 
 </body>
 </html>
+
 
 
