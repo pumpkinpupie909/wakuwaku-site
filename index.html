@@ -251,19 +251,39 @@ const filtered = list
     div.className = "item-card";
 
 div.innerHTML = `
-  <div style="display:flex; align-items:center; margin-bottom:8px;">
+  <div style="
+    display:flex;
+    align-items:center;
+    margin-bottom:8px;
+    gap:6px;
+  ">
+    <!-- チェックボックス（幅固定） -->
     <input
       type="checkbox"
       ${item.done ? "checked" : ""}
       onclick="toggleDone(${item.id})"
-      style="margin-right:8px;"
+      style="
+        width:18px;
+        height:18px;
+        flex-shrink:0;
+      "
     >
 
-    <strong style="font-size:18px; white-space:normal;">
+    <!-- キャラ名（横いっぱい使う） -->
+    <div style="
+      flex:1;
+      min-width:0;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      font-size:18px;
+      font-weight:bold;
+    ">
       ${item.name}
-    </strong>
+    </div>
 
-    <span class="${pClass}" style="margin-left:8px;">
+    <!-- 優先度 -->
+    <span class="${pClass}" style="flex-shrink:0;">
       [${item.priority}]
     </span>
   </div>
@@ -285,6 +305,7 @@ div.innerHTML = `
 
 </body>
 </html>
+
 
 
 
