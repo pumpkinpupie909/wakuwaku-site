@@ -288,20 +288,21 @@ div.innerHTML = `
     </span>
   </div>
 
+
   <div style="display:flex; gap:8px; margin-bottom:12px;">
     <button style="background:#2196f3;" onclick="editItem(${item.id})">編集</button>
     <button style="background:#e53935;" onclick="deleteItem(${item.id})">削除</button>
   </div>
-`;
 
-      <div style="font-size:14px; line-height:1.6;">
+  <div style="font-size:14px; line-height:1.6;">
     <div>1体目：${item.slots?.[0] || "-"}</div>
     <div>2体目：${item.slots?.[1] || "-"}</div>
     <div>3体目：${item.slots?.[2] || "-"}</div>
     <div>4体目：${item.slots?.[3] || "-"}</div>
     <div>5体目：${item.slots?.[4] || "-"}</div>
-  </div>
+ </div>
 
+`;
 
 
     area.appendChild(div);
@@ -314,6 +315,7 @@ div.innerHTML = `
 
 </body>
 </html>
+
 
 
 
