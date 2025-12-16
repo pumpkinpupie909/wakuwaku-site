@@ -167,13 +167,21 @@
   };
 
   // ▼ 完了フラグ
-  window.toggleDone = function(id){
+ window.toggleDone = async function(id){
   const item = list.find(x => x.id === id);
   if (!item) return;
 
   item.done = !item.done;
+
+  // ★ Firestore に保存
+  await setDoc(
+    doc(db, "wakuList", String(item.id)),
+    item
+  );
+
   render();
 };
+
 
   // ▼ 編集
   window.editItem = function(id){
@@ -315,6 +323,7 @@ div.innerHTML = `
 
 </body>
 </html>
+
 
 
 
